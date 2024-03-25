@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Changes & Improvements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: #222;
+            padding: 20px;
+            max-width: 1000px;
+        }
+
+        h1 {
+            display: inline-block;
+            margin-top: 0;
+            font-size: 28px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #00FFFF, #FF00FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .code {
+            padding: 1px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        a {
+            color: lightblue;
+        }
+
+        .header {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            border-top: 1px solid white;
+            padding-top: 20px;
+        }
+
+        .changes {
+            margin-left: 20px;
+        }
+
+        .important {
+            font-weight: bold;
+        }
+
+        .examples {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TypeRacer Stats - Changes & Improvements</h1>
+
+    <div class="section">
+        <div class="header">General</div>
+        <ul class="changes">
+            <li class="important">You no longer need to reply to the bot for your command to be processed!</li>
+            <li class="important">All users now have free access to direct message permissions and <span class="code">-setcolor</span></li>
+            <li class="important">New texts will be automatically added to the database everytime a user with a new text is imported</li>
+            <li class="important">Many cheated/inflated races have been corrected or removed</li>
+            <li>Any future reverse lagged scores are automatically detected and corrected when running <span class="code">-realspeed</span></li>
+            <li>Changed the display and formatting of most commands</li>
+            <li>Formatting has been standardized to remain consistent across various commands</li>
+            <li>Command parameters such as dates, durations, and numbers now accept various formats:
+                <ul class="examples">
+                    <li><span class="code">-day keegant 11/13/23</span></li>
+                    <li><span class="code">-marathon keegant races 1d12h30m</span></li>
+                    <li><span class="code">-fastestcompletion keegant 12.5k races</span></li>
+                </ul>
+            </li>
+            <li>The concept of "retroactive points" has been abstracted, all old races have their points calculated automatically on import</li>
+            <li>The TypeRacer Records channel will be automatically updated every 24 hours</li>
+            <li>Graphs have been updated with a new font</li>
+            <li>Graph colormaps now span the X-axis of lines and bar graphs, the colormap will also appear in the legend</li>
+            <li>The bin limit on bar graphs has been removed to show more detail</li>
+            <li>Text IDs are cached, you can use "^" in place of a text ID parameter to copy the previous text ID:
+                <ul class="examples">
+                    <li><span class="code">-personalbest me ^</span></li>
+                    <li><span class="code">-textleaderboard ^</span></li>
+                </ul>
+            </li>
+            <li>Added dynamic timestamps for races</li>
+            <li>Added various command aliases for convenience</li>
+            <li>Added more descriptive error messages</li>
+            <li>Many other small improvements!</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="header">Added</div>
+        <ul class="changes">
+            <li><span class="code">-best [username] [text_id]</span> - Displays a user's top 10 best races for a specific text ID</li>
+            <li><span class="code">-bestaverages</span> - Displays a user's top 10 best average of n races</li>
+            <li><span class="code">-compare</span> - Displays the top 10 races for each user sorted by text best WPM difference</li>
+            <li><span class="code">-histogram [username] textbests</span></li>
+            <li><span class="code">-histogram [username] accuracy</span></li>
+            <li><span class="code">-longevitystats</span> - Displays the number of times a user has completed n races in a time period</li>
+            <li><span class="code">-milestone [username] [milestone] texts</span></li>
+            <li><span class="code">-positionstats</span> - Displays stats about the positions of a user's races</li>
+            <li><span class="code">-profilepicture</span> - Displays a user's profile picture</li>
+            <li><span class="code">-racehistory</span> - Displays race history for a time period and sort</li>
+            <li><span class="code">-race</span> - Shows non-realspeed details about a race</li>
+            <li><span class="code">-racesunder</span> - Displays the number of races a user has less than a category threshold</li>
+            <li><span class="code">-racetext</span> (shows same details as <span class="code">-text</span>, but takes a race number instead of a text ID)</li>
+            <li><span class="code">-textgraph</span> (alias of <span class="code">-text</span>) - Displays an improvement graph specific to the text ID</li>
+            <li><span class="code">-racetextgraph</span> (alias of <span class="code">-racetext</span>) does the same as <span class="code">-textgraph</span> but with a race number</li>
+            <li><span class="code">-realspeedgraph</span> (alias of <span class="code">-realspeed</span>) - Displays a graph of your real speed</li>
+            <li><span class="code">-rawspeedgraph</span>, <span class="code">-rawadjustedgraph</span> (alias of <span class="code">-raw</span>) - Displays a graph raw speeds</li>
+            <li><span class="code">-textleaderboard</span> - Displays a top 10 leaderboard for a text</li>
+            <li><span class="code">-toptens [username] best</span> - Display a user's top 10 performances ordered by position, WPM, and WPM gain (for #1 spots)</li>
+            <li><span class="code">-lastcomp</span>, <span class="code">-lastweek</span>, <span class="code">-lastmonth</span>, <span class="code">-lastyear</span> command aliases</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="header">Updated</div>
+        <ul class="changes">
+            <li><span class="code">-awards</span> uses real competition data to count awards (instead of counting the incorrect number from profile pages)</li>
+            <li><span class="code">-comparegraph</span> (previously <span class="code">-compare</span>) shows stats in the embed</li>
+            <li><span class="code">-competition</span> can show results from previous competitions</li>
+            <li><span class="code">-competition</span> shows accuracies</li>
+            <li><span class="code">-day</span> requires the account to be imported</li>
+            <li><span class="code">-histogram</span> shows stats in the embed</li>
+            <li><span class="code">-improvement</span> can be used for any specific race or date range</li>
+            <ul class="examples">
+                <li><span class="code">-improvement keegant 800k 900k</span></li>
+                <li><span class="code">-improvement keegant 2022-04-20 2024-01-01</span></li>
+            </ul>
+            <li><span class="code">-improvement</span> plots your best and worst race</li>
+            <li><span class="code">-improvement</span> shows stats in the embed</li>
+            <li><span class="code">-lastonline</span> shows the timestamp</li>
+            <li><span class="code">-leaderboard</span> has many new categories</li>
+            <li><span class="code">-matchgraph</span> shows accuracies</li>
+            <li><span class="code">-milestone</span> shows information about the milestone race</li>
+            <li><span class="code">-personalbestgraph</span> shows a history of each WPM barrier the user has broken</li> 
+            <li><span class="code">-racedetails</span> can display details about any specific race or date range</li>
+            <li><span class="code">-realspeed</span> will still show lagged speed for races without logs</li>
+            <li><span class="code">-realspeedaverage</span> and <span class="code">-rawspeedaverage</span> are capped at 10 races, and have a 20 second cooldown per user to prevent spam</li>
+            <li><span class="code">-search</span> can search for text IDs</li>
+            <li><span class="code">-search</span> will display similar results if none directly match the query</li>
+            <li><span class="code">-search</span> will display # of results found, but is capped at 10 results, use specific queries to narrow search results</li>
+            <li><span class="code">-session</span> takes a parameter for which type of session to view, and displays details about the races in the session</li>
+            <li><span class="code">-setcolor</span> now allows you to change your graph colors (instead of <span class="code">-setgraphcolor</span>)</li>
+            <li><span class="code">-text</span> (<span class="code">-personalbest</span>) automatically imports your most recent races to show updated stats</li>
+            <li><span class="code">-text</span> will notify you if the race placed in the top 10 for that text ID</li>
+            <li><span class="code">-textbestdistribution</span> (previously <span class="code">-breakdown</span>) has a cleaner format and displays extra stats</li>
+            <li><span class="code">-textbestgraph</span> shows the same extra stats as <span class="code">-textbestdistribution</span></li>
+            <li><span class="code">-textsunder</span> by default will order the results from highest to lowest</li>
+            <ul class="examples">
+                <li>To return the results in a random order, use <span class="code">-textsunder [username] [threshold] [category] random</span></li>
+            </ul>
+            <li><span class="code">-toptens</span> shows cumulative counts alongside position counts</li>
+            <li><span class="code">-unraced</span> shows text completion percentage</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="header">Fixed</div>
+        <ul class="changes">
+            <li><span class="code">-stats</span></li>
+            <li><span class="code">-medals</span></li>
+            <li>Any other command that was not running properly</li>
+            <li><span class="code">-rawspeed</span> no longer shows inflated WPM values when "|" is typed</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="header">Removed</div>
+        <ul class="changes">
+            <li><span class="code">-longestbreak</span> (now shown in <span class="code">-races</span>)</li>
+            <li><span class="code">-timebetween</span> (now shown in <span class="code">-races</span>)</li>
+            <li><span class="code">-levenshtein</span> (search now does this automatically)</li>
+            <li><span class="code">-setgraphcolor</span> (all colors are now set through <span class="code">-setcolor</span>)</li>
+            <li><span class="code">-lastrace</span></li>
+            <li><span class="code">-boxplot</span></li>
+            <li><span class="code">-unixreference</span></li>
+            <li><span class="code">-serverinfo</span></li>
+            <li><span class="code">-art</span></li>
+            <li><span class="code">-clip</span></li>
+            <li><span class="code">-updates</span></li>
+            <li><span class="code">-keymap</span></li>
+            <li><span class="code">-calc</span></li>
+        </ul>
+    </div>
+</body>
+
+</html>
